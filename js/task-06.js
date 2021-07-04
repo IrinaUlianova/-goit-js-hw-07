@@ -1,16 +1,20 @@
-const refs = {
-  input: document.querySelector("input#validation-input"),
-  length: document.querySelector("input#validation-input").dataset.length,
-};
+/*Напиши скрипт, который бы при потере фокуса на инпуте, проверял его содержимое на правильное количество символов.*/
+/*Сколько символов должно быть в инпуте, указывается в его атрибуте data-length.
+Если введено подходящее количество, то border инпута становится зеленым, если неправильное - красным.*/
+const validationInputRef = document.querySelector("#validation-input");
+console.log(validationInputRef);
+const validInputLengthRef = document.querySelector("input#validation-input")
+  .dataset.length;
+console.log(validInputLengthRef);
 
-refs.input.addEventListener("blur", onVaildInput);
-
-function onVaildInput(event) {
+validationInputRef.addEventListener("blur", onValidInput);
+function onValidInput(event) {
   const lengthValue = event.currentTarget.value.length;
-  if (lengthValue == refs.length) {
-    refs.input.classList.add("valid");
-    refs.input.classList.remove("invalid");
+
+  if (lengthValue == validInputLengthRef) {
+    validationInputRef.classList.add("valid");
+    validationInputRef.classList.remove("invalid");
   } else {
-    refs.input.classList.add("invalid");
+    validationInputRef.classList.add("invalid");
   }
 }
