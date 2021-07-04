@@ -7,7 +7,11 @@ console.log(nameInputRef);
 const nameOutputRef = document.querySelector("#name-output");
 console.log(nameOutputRef);
 
-nameInputRef.addEventListener("change", changeInputName);
-function changeInputName() {
-  return (nameOutputRef.textContent = nameInputRef.value);
+nameInputRef.addEventListener("input", changeInputName);
+function changeInputName(event) {
+  if (event.currentTarget.value) {
+    nameOutputRef.textContent = event.currentTarget.value;
+  } else {
+    nameOutputRef.textContent = "незнакомец";
+  }
 }

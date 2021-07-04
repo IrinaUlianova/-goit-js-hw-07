@@ -4,9 +4,14 @@ input#font - size - control(событие input) и изменяет инлай
  перетаскивании ползунка будет меняться размер текста.*/
 const fontSizeControlRef = document.querySelector("#font-size-control");
 const textNameRef = document.querySelector("#text");
-fontSizeControlRef.min = 10;
+let fontSizeValue = fontSizeControlRef.value;
+textNameRef.style.fontSize = `${fontSizeValue}px`;
 
 fontSizeControlRef.addEventListener("input", onChangeFonts);
+
 function onChangeFonts(event) {
-  textNameRef.style.fontSize = event.currentTarget.value + "px";
+  console.dir(event);
+  let fontSizeValue = event.currentTarget.value;
+  textNameRef.style.fontSize = `${fontSizeValue}px`;
+  console.log(textNameRef.style.fontSize);
 }
